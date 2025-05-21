@@ -15,5 +15,5 @@ jobs:
       - name: 23f3004091@ds.study.iitm.ac.in
         run: echo "Hello, world!"
         
-      - name: may
-        run: 5-21-2025
+      - name: Display date
+        run: date
