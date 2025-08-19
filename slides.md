@@ -169,8 +169,120 @@ $$\text{Efficiency Gain} = \frac{2.3 - 0.8}{2.3} \times 100\% = 65.2\%$$
 
 ---
 
-<!-- _backgroundImage: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') -->
-<!-- _class: lead -->
+<!-- New Interactive Slide: Slider controls scenario projections -->
+# Interactive Scenario — Revenue Projection
+
+<!-- 
+  Comment: This slide contains an interactive slider widget.
+  Data flow:
+   1. User moves the slider (input range) -> slider value (growthFactor) updates.
+   2. JS calculates projected metrics using base values (from Q2 2025).
+   3. JS updates DOM elements (these are the "dependent cells").
+   4. Markdown-like outputs are rendered inside HTML containers so they update in real time.
+-->
+
+<div style="max-width:900px">
+  <p><strong>Use the slider</strong> to simulate projected % growth multiplier for Q3 (from conservative to aggressive).</p>
+
+  <!-- Slider input (controls the growth multiplier). This is the "source" cell. -->
+  <label for="growthRange">Growth scenario: <span id="growthLabel">+15%</span></label>
+  <input id="growthRange" type="range" min="0" max="40" value="17" step="1" style="width:100%;">
+
+  <hr/>
+
+  <!-- These are the dependent "cells" that update when slider changes. -->
+  <div id="projectionOutputs" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+    <div style="padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <h3>Projected Revenue</h3>
+      <div id="projRevenue" style="font-size:1.4rem;font-weight:700;">$2.8M</div>
+      <div id="projRevenueNote" style="font-size:0.9rem;color:#555;">(based on multiplier)</div>
+    </div>
+
+    <div style="padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <h3>Projected Active Users</h3>
+      <div id="projUsers" style="font-size:1.4rem;font-weight:700;">18,000</div>
+      <div id="projUsersNote" style="font-size:0.9rem;color:#555;">(user growth scales with revenue)</div>
+    </div>
+
+    <div style="padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <h3>Projected Profit Margin</h3>
+      <div id="projMargin" style="font-size:1.4rem;font-weight:700;">70%</div>
+      <div id="projMarginNote" style="font-size:0.9rem;color:#555;">(margins improve slightly with scale)</div>
+    </div>
+
+    <div style="padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+      <h3>Scenario Summary</h3>
+      <div id="scenarioSummary" style="font-size:0.95rem;color:#333;">
+        Conservative to aggressive scenario shown here. Adjust slider for values.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Inline script: calculates projections from base Q2 values.
+  - baseRevenue, baseUsers, baseMargin represent the "input dataset" (Q2 2025).
+  - growthPct is read from slider and used to compute projected values.
+  - All dependent DOM nodes are updated — these are the "cells with variable dependencies".
+-->
+<script>
+(function() {
+  // Base (Q2 2025) values - these are our baseline dataset inputs.
+  const baseRevenue = 2.4;   // in millions
+  const baseUsers = 15000;   // users
+  const baseMargin = 0.68;   // 68%
+
+  // DOM elements
+  const range = document.getElementById('growthRange');
+  const growthLabel = document.getElementById('growthLabel');
+  const projRevenue = document.getElementById('projRevenue');
+  const projUsers = document.getElementById('projUsers');
+  const projMargin = document.getElementById('projMargin');
+  const scenarioSummary = document.getElementById('scenarioSummary');
+
+  // Helper for formatting numbers
+  function formatMoney(millions) {
+    return '$' + (millions.toFixed(2)) + 'M';
+  }
+  function formatUsers(n) {
+    return n.toLocaleString();
+  }
+
+  // Update function (runs whenever slider changes)
+  function updateProjections() {
+    // Slider value is percent growth over base (e.g., 17 -> +17%)
+    const growthPct = Number(range.value);
+    growthLabel.textContent = (growthPct >= 0 ? '+' : '') + growthPct + '%';
+
+    // Calculate projected values
+    const revenueProjected = baseRevenue * (1 + growthPct / 100);
+    // Assume user growth scales 0.9x of revenue growth percentally (example logic)
+    const usersProjected = Math.round(baseUsers * (1 + (growthPct * 0.9) / 100));
+    // Assume margin improves modestly with scale, up to +5 percentage points at +40% growth
+    const marginImprovement = Math.min(0.05, (growthPct / 40) * 0.05);
+    const marginProjected = Math.min(0.85, baseMargin + marginImprovement);
+
+    // Update DOM (these are the dependent "cells")
+    projRevenue.textContent = formatMoney(revenueProjected);
+    projUsers.textContent = formatUsers(usersProjected);
+    projMargin.textContent = Math.round(marginProjected * 100) + '%';
+
+    // Dynamic summary (acts like dynamic markdown output)
+    scenarioSummary.innerHTML = `
+      <strong>Scenario:</strong> ${growthPct}% projected growth.<br/>
+      <strong>Revenue:</strong> ${formatMoney(revenueProjected)} (vs base ${formatMoney(baseRevenue)})<br/>
+      <strong>Users:</strong> ${formatUsers(usersProjected)} (scales at 0.9× growth)<br/>
+      <strong>Margin:</strong> ${Math.round(marginProjected*100)}% (improved by ${Math.round(marginImprovement*100)} pts)
+    `;
+  }
+
+  // Attach handler and initialize
+  range.addEventListener('input', updateProjections);
+  updateProjections();
+})();
+</script>
+
+---
 
 # Thank You
 ## Questions & Discussion
@@ -196,4 +308,4 @@ $$\text{Efficiency Gain} = \frac{2.3 - 0.8}{2.3} \times 100\% = 65.2\%$$
 - Markdown (source)
 - HTML (web presentation)
 - PDF (printable)
-- PowerPoint (export)f
+- PowerPoint (export)
