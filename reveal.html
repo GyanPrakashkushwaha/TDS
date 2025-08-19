@@ -1,117 +1,253 @@
-<!doctype html>
+<!-- File: index.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>Q3 2025 - Quarterly Earnings Report</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/sky.css" id="theme">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/math/katex.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quarterly Earnings – RevealJS</title>
+  <!-- Core RevealJS styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme" />
+  <!-- Optional: highlight.js code theme (auto-included by plugin but theme can be styled further) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css" />
+  <!-- Custom tweaks -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+  <style>
+    :root {
+      /* Responsive base font size */
+      --r-main-font-size: calc(0.6vw + 0.6vh + 0.6vmin);
+    }
+    .brand-badge { font-size: 0.9em; opacity: 0.8; }
+    .kpi { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; }
+    .kpi .card { padding: 1.2rem; border-radius: 1rem; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+    .card h3 { margin: 0 0 .4rem; }
+    .chart { width: 100%; height: calc(100vh - 260px); }
+    .muted { opacity: .7; }
+  </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            
-            <section>
-                <h1>Q3 2025 Earnings Report</h1>
-                <p>A Technical Overview</p>
-                <br>
-                <p><small>Presented by: Technical Consulting Division</small></p>
-                <p><small>Contact: <a href="mailto:23f3004091@ds.study.iitm.ac.in">23f3004091@ds.study.iitm.ac.in</a></small></p>
-            </section>
+  <div class="reveal">
+    <div class="slides">
 
-            <section data-markdown>
-                <textarea data-template>
-                    ## Q3 Key Takeaways
-                    - Revenue increased by **15%** year-over-year.
-                    - Net profit margin grew to **22%**, up from 18%.
-                    - Successful launch of our new FinTech platform.
-                    - Market share expanded in the APAC region by 5%.
-                </textarea>
-            </section>
+      <!-- Title slide (with your email) -->
+      <section>
+        <h1>Quarterly Earnings Report</h1>
+        <h3 class="muted">Interactive Stakeholder Presentation</h3>
+        <p class="brand-badge">Prepared by: 23f3004091@ds.study.iitm.ac.in</p>
+        <aside class="notes">
+          Welcome everyone. This deck demonstrates modern RevealJS features while summarizing the quarter. Use S to open speaker notes during the talk.
+        </aside>
+      </section>
 
-            <section>
-                <h2>Forward-Looking Projections</h2>
-                <ul>
-                    <li class="fragment" data-fragment-index="1">Projected Q4 Revenue: **$1.2B**</li>
-                    <li class="fragment" data-fragment-index="2">Expected Market Penetration: **+3%**</li>
-                    <li class="fragment fade-up" data-fragment-index="3">Investment in R&D to increase by **20%**</li>
-                    <li class="fragment" data-fragment-index="4">Focus on sustainable growth and ESG initiatives.</li>
-                </ul>
-                <aside class="notes">
-                    Speak to each point individually. Emphasize the R&D investment as a key driver for future innovation. Mention the positive feedback on our new ESG policies.
-                </aside>
-            </section>
+      <!-- Markdown slide (require RevealMarkdown plugin) -->
+      <section data-markdown>
+        <textarea data-template>
+## Highlights (Markdown)
 
-            <section>
-                <h2>Sentiment Analysis of Earnings Call</h2>
-                <p>A Python script snippet used to analyze transcript sentiment.</p>
-                <pre><code class="python" data-line-numbers="1-3|5-7|9-10" style="font-size: 18px;">
-import pandas as pd
-from textblob import TextBlob
+- **Revenue** grew **12.4% YoY**
+- **Operating Margin** improved to **18.2%**
+- **Free Cash Flow** positive for the 6th consecutive quarter
 
-# Load the earnings call transcript
-with open('q3_transcript.txt', 'r') as file:
-    transcript = file.read()
+---
 
-# Perform sentiment analysis
-sentiment = TextBlob(transcript)
-print(f"Polarity: {sentiment.sentiment.polarity:.2f}")
-print(f"Subjectivity: {sentiment.sentiment.subjectivity:.2f}")
-                </code></pre>
-            </section>
+### Outlook (Markdown)
 
-            <section>
-                <h2>Key Financial Metrics</h2>
-                <p>We use the Compound Annual Growth Rate (CAGR) to measure long-term growth.</p>
-                <p>
-                    $$
-                    CAGR = \left( \frac{EV}{BV} \right)^{\frac{1}{n}} - 1
-                    $$
-                </p>
-                <p style="font-size: 0.6em; margin-top: 20px;">
-                    Where:<br>
-                    $EV$ = Ending Value<br>
-                    $BV$ = Beginning Value<br>
-                    $n$ = Number of Years
-                </p>
-            </section>
+- Guidance maintained within previously communicated range
+- Focus on **cost discipline** and **platform investments**
 
-            <section>
-                <h2>Thank You</h2>
-                <p>Open for Questions</p>
-            </section>
+> Press **O** for overview, **F** for fullscreen, **S** for notes
+        </textarea>
+        <aside class="notes">This slide proves Markdown rendering. Use it for fast authoring & version control diff friendliness.</aside>
+      </section>
 
+      <!-- Fragments (animated reveals) -->
+      <section>
+        <h2>Drivers of Performance</h2>
+        <ul>
+          <li class="fragment">Expansion in enterprise subscriptions</li>
+          <li class="fragment">Lower infrastructure unit costs</li>
+          <li class="fragment fade-up">Improved collections cycle (DSO ↓)</li>
+        </ul>
+        <div class="r-stack" style="margin-top: 1rem;">
+          <img class="fragment" src="https://dummyimage.com/1000x380/eee/111&text=Q1+Mix" alt="Mix 1">
+          <img class="fragment" src="https://dummyimage.com/1000x380/e8f4ff/111&text=Q2+Mix" alt="Mix 2">
+          <img class="fragment" src="https://dummyimage.com/1000x380/eafbe7/111&text=Q3+Mix" alt="Mix 3">
         </div>
+        <aside class="notes">Use fragments to pace the narrative. r-stack overlays images so each fragment replaces the prior.</aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting and line focus -->
+      <section>
+        <h2>Code Sample: KPI Calculation Pipeline</h2>
+        <pre><code class="language-python" data-line-numbers="1-5|7-10|12-17">
+import pandas as pd
+
+# Load ledger export
+ledger = pd.read_csv('data/ledger.csv')
+fx = pd.read_csv('data/fx_rates.csv')
+
+# Normalize to USD and filter quarter
+q = '2025Q2'
+q_ledger = (ledger
+    .merge(fx, on='currency')
+    .assign(amount_usd=lambda d: d.amount * d.usd_rate)
+    .query('quarter == @q'))
+
+# KPIs
+gmv = q_ledger.loc[q_ledger.type == 'sale', 'amount_usd'].sum()
+refunds = q_ledger.loc[q_ledger.type == 'refund', 'amount_usd'].sum()
+net_revenue = gmv - refunds
+print({'gmv': gmv, 'refunds': refunds, 'net_revenue': net_revenue})
+        </code></pre>
+        <aside class="notes">Highlight plugin auto-detects language. Use data-line-numbers with pipes to step through sections.</aside>
+      </section>
+
+      <!-- Math: financial formulas via MathJax -->
+      <section>
+        <h2>Financial Math</h2>
+        <p>Discounted Cash Flow (DCF):</p>
+        <p>\[ V_0 = \sum_{t=1}^{T} \frac{FCF_t}{(1 + r)^t} + \frac{TV_T}{(1+r)^T} \]</p>
+        <p>Capital Asset Pricing Model (CAPM):</p>
+        <p>\[ E[R_i] = R_f + \beta_i (E[R_m] - R_f) \]</p>
+        <aside class="notes">MathJax renders TeX. Keep symbols consistent (Rf, beta, market premium). Use this to justify discount rates.</aside>
+      </section>
+
+      <!-- Live demo: lazy-loaded iframe (works offline if you point to local) -->
+      <section>
+        <h2>Product Metrics Demo</h2>
+        <iframe data-src="https://observablehq.com/@observablehq/plot-introduction" data-preload style="width:100%; height:70vh; border:0; border-radius:12px;"></iframe>
+        <aside class="notes">Iframes support sandboxed live demos. data-src delays loading until the slide is shown.</aside>
+      </section>
+
+      <!-- KPI Grid example (simple, static) -->
+      <section>
+        <h2>Quarter-at-a-Glance</h2>
+        <div class="kpi">
+          <div class="card fragment">
+            <h3>Revenue</h3>
+            <p><strong>$412.6M</strong> <span class="muted">(+12.4% YoY)</span></p>
+          </div>
+          <div class="card fragment">
+            <h3>Op. Margin</h3>
+            <p><strong>18.2%</strong> <span class="muted">(+180 bps)</span></p>
+          </div>
+          <div class="card fragment">
+            <h3>FCF</h3>
+            <p><strong>$64.9M</strong> <span class="muted">(6th consecutive +)</span></p>
+          </div>
+        </div>
+        <aside class="notes">Numbers here are placeholders; replace with authoritative figures prior to publishing.</aside>
+      </section>
+
+      <!-- Closing / Contact -->
+      <section>
+        <h2>Thank You</h2>
+        <p>Questions? Contact: <strong>23f3004091@ds.study.iitm.ac.in</strong></p>
+        <p class="muted">Press <kbd>?</kbd> for keyboard shortcuts.</p>
+      </section>
+
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/math/math.js"></script>
+  <!-- RevealJS core + plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
 
-    <script>
-        // Initialize RevealJS with required plugins and configurations
-        Reveal.initialize({
-            hash: true,
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', // none, fade, slide, convex, concave, zoom
-            
-            // Activate plugins
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-        });
-    </script>
+  <script>
+    // Initialize deck
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.05,
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transition: 'slide',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ],
+      // MathJax config
+      math: {
+        // TeX-AMS_HTML by default
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      }
+    });
+  </script>
 </body>
 </html>
+
+<!-- =============================================== -->
+<!-- File: README.md (instructions for GitHub Pages)  -->
+<!-- Save the following as README.md in your repo    -->
+<!-- =============================================== -->
+<!--
+# Quarterly Earnings – RevealJS (GitHub Pages)
+
+This repository hosts an interactive RevealJS deck for the quarterly earnings report.
+
+## Quick Start
+1. **Create Repo** on GitHub (e.g., `earnings-deck`).
+2. Add these files, commit, and push to `main`.
+3. Enable GitHub Pages via **Settings → Pages**:
+   - **Source**: `GitHub Actions` (recommended) *or* `Deploy from a branch` (use `main` and `/root`).
+4. If using Actions (recommended), keep the provided workflow (below). Pages URL will appear in the repo’s **Environments → github-pages**.
+
+## Local Preview (optional)
+Open `index.html` in a browser, or serve locally:
+```bash
+python -m http.server 8000
+# then visit http://localhost:8000
+```
+
+## Author Contact
+Prepared by: **23f3004091@ds.study.iitm.ac.in**
+
+-->
+
+<!-- ==================================================== -->
+<!-- File: .github/workflows/deploy.yml  (GitHub Actions)  -->
+<!-- Create folders if needed; GitHub will recognize this. -->
+<!-- ==================================================== -->
+<!--
+name: Deploy RevealJS to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+-->
